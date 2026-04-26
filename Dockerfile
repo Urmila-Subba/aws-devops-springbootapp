@@ -1,6 +1,4 @@
-FROM public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
-RUN apk add --no-cache curl
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17
 WORKDIR /app
-COPY target/springboot-aws-deploy-service.jar app.jar
-EXPOSE 8080
+COPY target/*.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
