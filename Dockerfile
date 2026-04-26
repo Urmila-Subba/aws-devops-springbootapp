@@ -1,6 +1,6 @@
-FROM eclipse-temurin:17-jdk-alpine
-RUN apk add curl
-VOLUME /tmp
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17-alpine
+RUN apk add --no-cache curl
+WORKDIR /app
+COPY target/springboot-aws-deploy-service.jar app.jar
 EXPOSE 8080
-ADD target/springboot-aws-deploy-service.jar springboot-aws-deploy-service.jar
-ENTRYPOINT ["java","-jar","/springboot-aws-deploy-service.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
